@@ -15,5 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 
+from user import apis as user_api
+
 urlpatterns = [
+    url(r'^user/api/gend_vcode', user_api.gend_vcode)
 ]

@@ -23,4 +23,4 @@ class User(models.Model):
     avatar = models.CharField(verbose_name='形象', max_length=256)
 
     class Meta:
-        db_table =user'
+        db_table = 'user'
