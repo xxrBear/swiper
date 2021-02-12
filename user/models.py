@@ -22,5 +22,15 @@ class User(models.Model):
     location = models.CharField(verbose_name='常住地', max_length=256, choices=LOCATION)
     avatar = models.CharField(verbose_name='形象', max_length=256)
 
+    def to_dict(self):
+        return {
+            'phonenum': self.phonenum,
+            'nickname': self.nickname,
+            'gender': self.gender,
+            'birthday': str(self.birthday),
+            'location': self.location,
+            'avatar': self.avatar
+        }
+
     class Meta:
         db_table = 'user'

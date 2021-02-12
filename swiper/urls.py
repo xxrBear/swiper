@@ -18,5 +18,7 @@ from django.conf.urls import url
 from user import apis as user_api
 
 urlpatterns = [
-    url(r'^user/api/gend_vcode', user_api.gend_vcode)
+    # user模块
+    url(r'^user/api/get_vcode', user_api.get_vcode),
+    url(r'^user/api/sumbit_vcode', user_api.sumbit_vcode),
 ]
