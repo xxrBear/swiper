@@ -34,3 +34,19 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user'
+
+
+class Profile(models.Model):
+    '''个人资料'''
+    dating_gender = models.CharField(max_length=6, choices=User.SEX, default='male', verbose_name='匹配的性别')
+    dating_location = models.CharField(max_length=15, choices=User.LOCATION, default='上海', verbose_name='目标城市')
+    min_distance = models.IntegerField(default=1, verbose_name='最小查找范围')
+    max_distance = models.IntegerField(default=10, verbose_name='最大查找范围')
+    min_dating_age = models.IntegerField(default=18, verbose_name='最小交友年龄')
+    max_dating_age = models.IntegerField(default=50, verbose_name='最大交友年龄')
+    vibration = models.BooleanField(default=True, verbose_name='是否开启震动')
+    only_matche = models.BooleanField(default=True, verbose_name='不让未匹配的人看我的相册')
+    auto_play = models.BooleanField(default=True, verbose_name='自动播放视频')
+
+    class Meta:
+        db_table = 'profile'

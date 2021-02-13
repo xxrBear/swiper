@@ -24,7 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../桌面/X_Swiper" />
+    <property name="last_opened_file_path" value="$USER_HOME$/桌面/X_Swiper" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -39,6 +39,7 @@
       <workItem from="1612586033315" duration="1041000" />
       <workItem from="1612920005648" duration="7686000" />
       <workItem from="1613015796348" duration="7244000" />
+      <workItem from="1613183320819" duration="1074000" />
     </task>
     <servers />
   </component>
