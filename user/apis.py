@@ -8,8 +8,8 @@ from user.models import User, Profile
 from libs.http import render_json
 
 
-def get_vcode(request):  # 得到验证码
-
+def get_vcode(request):
+    """得到验证码接口"""
     phonenum = request.GET.get('phonenum')
     status = logics.send_vcode(phonenum)
     if status:
@@ -18,7 +18,8 @@ def get_vcode(request):  # 得到验证码
         return render_json(code=stat.SEND_SMS_ERR)
 
 
-def sumbit_vcode(request):  # 提交验证码
+def sumbit_vcode(request):
+    """提交验证码接口"""
     phonenum = request.POST.get('phonenum')
     vcode = request.POST.get('vcode')
 
@@ -51,8 +52,8 @@ def set_profile(request):
     if not profile_form.is_valid():
         return render_json(code=stat.PROFILE_FORM_ERR, data=profile_form.errors)
 
-    data = {}
-    data.update(user_form)
-    data.update(profile_form)
+    # 保存数据
+    User.objects.filter(id=request.uid).update(**user_form.cleaned_data)
+    Profile.objects.filter(id=request.uid).update(**profile_form.cleaned_data)
 
-    return render_json(data=data)
+    return render_json()
