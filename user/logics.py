@@ -13,6 +13,7 @@ def get_random_vcode(length=6):
 
 
 def send_vcode(phonenum):
+    # 利用云之讯发短信
     vcode = get_random_vcode()
     print(vcode)
     data = copy.copy(config.YZX_COF)

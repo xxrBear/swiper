@@ -22,6 +22,12 @@ class User(models.Model):
     location = models.CharField(verbose_name='常住地', max_length=256, choices=LOCATION)
     avatar = models.CharField(verbose_name='形象', max_length=256)
 
+    @property
+    def profile(self):
+        if not hasattr(self, '_profile'):
+            self._profile, _ = Profile.objects.get_or_create(id=self.id)
+        return self._profile
+
     def to_dict(self):
         return {
             'phonenum': self.phonenum,
@@ -47,6 +53,20 @@ class Profile(models.Model):
     vibration = models.BooleanField(default=True, verbose_name='是否开启震动')
     only_matche = models.BooleanField(default=True, verbose_name='不让未匹配的人看我的相册')
     auto_play = models.BooleanField(default=True, verbose_name='自动播放视频')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'dating_gender': self.dating_gender,
+            'dating_location': self.dating_location,
+            'min_distance': self.min_distance,
+            'max_distance': self.max_distance,
+            'min_dating_age': self.min_dating_age,
+            'max_dating_age': self.max_dating_age,
+            'vibration': self.vibration,
+            'only_matche': self.only_matche,
+            'auto_play': self.auto_play,
+        }
 
     class Meta:
         db_table = 'profile'

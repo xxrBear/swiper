@@ -21,4 +21,6 @@ urlpatterns = [
     # user模块
     url(r'^user/api/get_vcode', user_api.get_vcode),
     url(r'^user/api/sumbit_vcode', user_api.sumbit_vcode),
+    url(r'^user/api/get_profile', user_api.get_profile),
+    url(r'^user/api/set_profile', user_api.set_profile),
 ]
