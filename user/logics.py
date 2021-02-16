@@ -29,3 +29,16 @@ def send_vcode(phonenum):
         return True
     else:
         return False
+
+
+def save_avatar(uid, avatar):
+    """本地保存头像函数"""
+
+    filename = 'avatar-%s' % uid
+    filepath = '/tmp/%s' % filename
+
+    with open(filepath, 'wb') as f:
+        for chunk in avatar.chunks():
+            f.write(chunk)
+
+    return filename, filepath

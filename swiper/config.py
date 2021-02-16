@@ -13,3 +13,5 @@ YZX_COF = {
 # 阿里云配置
 ALI_AK = 'LTAI4G6VzqyMgtzBBSP5YNuh'
 ALI_SK = 'dSS1yCCL3Qv15CkMx50q2f9RDFamgV'
+
+ali_url = 'https://bearxxr.oss-cn-shanghai.aliyuncs.com/'

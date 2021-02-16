@@ -6,6 +6,7 @@ from common import stat
 from user.forms import UserForm, ProfileForm
 from user.models import User, Profile
 from libs.http import render_json
+from libs.ali_cloud import upload_to_ali
 
 
 def get_vcode(request):
@@ -37,7 +38,8 @@ def sumbit_vcode(request):
         return render_json(code=stat.VCODE_ERR)
 
 
-def get_profile(request):  # 获取个人资料
+def get_profile(request):
+    """获取个人资料"""
     profile, _ = Profile.objects.get_or_create(id=request.uid)
     return JsonResponse(data=profile.to_dict())
 
@@ -56,4 +58,13 @@ def set_profile(request):
     User.objects.filter(id=request.uid).update(**user_form.cleaned_data)
     Profile.objects.filter(id=request.uid).update(**profile_form.cleaned_data)
 
+    return render_json()
+
+
+def upload_avatar(request):
+    """上传头像接口"""
+    avatar = request.FILES.get('avatar')
+
+    filename, filepath = logics.save_avatar(request.uid, avatar)
+    url = upload_to_ali(filename, filepath)
     return render_json()

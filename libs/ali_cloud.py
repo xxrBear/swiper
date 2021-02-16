@@ -15,6 +15,8 @@ def upload_to_ali(filename, filepath):
 
     bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
     # 先输入本地文件名，再设置oss上的名字
-    bucket.put_object_from_file(filepath, filename)
+    bucket.put_object_from_file(filename, filepath)
 
-    return
+    avatar_url = '%s/%s' % (config.ali_url, filename)
+
+    return avatar_url

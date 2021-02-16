@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^user/api/sumbit_vcode', user_api.sumbit_vcode),
     url(r'^user/api/get_profile', user_api.get_profile),
     url(r'^user/api/set_profile', user_api.set_profile),
+    url(r'^user/api/upload_avatar', user_api.upload_avatar),
 ]
