@@ -1,3 +1,4 @@
+import os
 import random
 import copy
 
@@ -5,6 +6,9 @@ import requests
 from django.core.cache import cache
 
 from swiper import config
+from tasks import celery_app
+from user.models import User
+from libs.ali_cloud import upload_to_ali
 
 
 def get_random_vcode(length=6):
@@ -42,3 +46,14 @@ def save_avatar(uid, avatar):
             f.write(chunk)
 
     return filename, filepath
+
+
+@celery_app.task
+def upload_avatar(uid, avatar_file):
+    """头像上传至阿里云"""
+
+    filename, filepath = save_avatar(uid, avatar_file)  # 保存至本地
+    url = upload_to_ali(filename, filepath)  # 上传至阿里云oss
+    User.objects.filter(id=uid).update(avatar=url)  # 修改数据库内容
+
+    os.remove(filepath)  # 删除本地文件

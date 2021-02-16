@@ -6,7 +6,6 @@ from common import stat
 from user.forms import UserForm, ProfileForm
 from user.models import User, Profile
 from libs.http import render_json
-from libs.ali_cloud import upload_to_ali
 
 
 def get_vcode(request):
@@ -64,7 +63,6 @@ def set_profile(request):
 def upload_avatar(request):
     """上传头像接口"""
     avatar = request.FILES.get('avatar')
+    logics.upload_avatar.delay(request.uid, avatar)
 
-    filename, filepath = logics.save_avatar(request.uid, avatar)
-    url = upload_to_ali(filename, filepath)
     return render_json()
