@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 
 from user import apis as user_api
+from social import apis as social_api
 
 urlpatterns = [
     # user模块
@@ -24,4 +25,7 @@ urlpatterns = [
     url(r'^user/api/get_profile', user_api.get_profile),
     url(r'^user/api/set_profile', user_api.set_profile),
     url(r'^user/api/upload_avatar', user_api.upload_avatar),
+
+    # social模块
+    url(r'^social/api/rcmd_user$', social_api.rcmd_user),
 ]

@@ -24,7 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../桌面/X_Swiper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -74,7 +74,9 @@
       <workItem from="1613349341094" duration="5612000" />
       <workItem from="1613373877689" duration="3492000" />
       <workItem from="1613438761707" duration="6159000" />
-      <workItem from="1613469327315" duration="5784000" />
+      <workItem from="1613469327315" duration="7140000" />
+      <workItem from="1613521399157" duration="4802000" />
+      <workItem from="1613561902363" duration="3129000" />
     </task>
     <servers />
   </component>
