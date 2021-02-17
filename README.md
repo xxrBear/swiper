@@ -1,19 +1,28 @@
 # swiper
 
-##   swiper 是一个前后端分离的项目，目前是测试哦！目前有三个模块，User、Swiper、VIP
+##   swiper 是一个前后端分离的项目，目前是测试哦！目前有三个模块，User、Social、VIP
 
-###  User模块
+##  快速启动
 
-####  接口:
++ 安装依赖包
 
-```
-127.0.0.1:8000/user/api/get_vcode     # 发送手机验证码
-127.0.0.1:8000/user/api/sumbit_vcode  # 提交手机验证码
-127.0.0.1:8000/user/api/get_profile   # 获取个人资料
-127.0.0.1:8000/user/api/set_profile   # 修改个人资料
-127.0.0.1:8000/user/api/upload_avatar # 上传头像
-```
+  ```
+  pip install -r requirements
+  ```
+
++ 配置MySQL数据库
+
+  修改settings中的数据库配置为你自己的配置
+
++ 启动Django、Celery环境
+
+  ```
+  python manage.py runserver
+  celery worker -A tasks --loglevel==info
+  ```
+
 ## Celery配置
+
 **重试:Retrying**
 
 例子:
