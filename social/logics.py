@@ -1,6 +1,9 @@
 import datetime
 
-from user.models import User, Profile
+from user.models import User
+from user.models import Profile
+from social.models import Swiped
+from social.models import Friends
 
 
 def rcmd(uid):
@@ -18,6 +21,25 @@ def rcmd(uid):
         location=profile.dating_location,
         birthday__gte=earliest_birthday,
         birthday__lte=latest_birthday,
-    )
+    )[:20]
 
     return users
+
+
+def like_someone(uid, sid):
+    """
+    喜欢某人函数
+    1.Swiped表中记录喜欢某人
+    2.检查Swiped表中对方是否喜欢过我
+    3.如果喜欢匹配成好友
+    :param uid:
+    :param sid:
+    :return: True or False
+    """
+    Swiped.objects.create(uid=uid, sid=sid, stype='like')
+    if Swiped.is_liked(sid, uid):
+        Friends.make_friends(uid, sid)
+
+        return True
+    else:
+        return False
