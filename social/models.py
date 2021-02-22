@@ -16,7 +16,12 @@ class Swiped(models.Model):
     @classmethod
     def is_liked(cls, uid, sid):
         """判断用户是否喜欢过对方的类方法"""
-        return cls.objects.filter(uid=uid, sid=sid, stype__in=['like', 'superlike']).exists()
+        like_type = ['like', 'superlike']
+        try:
+            has_swiped = cls.objects.get(uid=uid, sid=sid)
+            return has_swiped.stype in like_type
+        except cls.DoesNotExist:
+            return None
 
     class Meta:
         db_table = 'swiped'

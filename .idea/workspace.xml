@@ -27,6 +27,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/social" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -48,7 +53,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -77,7 +82,11 @@
       <workItem from="1613469327315" duration="7140000" />
       <workItem from="1613521399157" duration="4802000" />
       <workItem from="1613561902363" duration="3129000" />
-      <workItem from="1613609081558" duration="3363000" />
+      <workItem from="1613609081558" duration="4247000" />
+      <workItem from="1613702115755" duration="2687000" />
+      <workItem from="1613780130306" duration="3787000" />
+      <workItem from="1613871185735" duration="5960000" />
+      <workItem from="1613953875603" duration="2169000" />
     </task>
     <servers />
   </component>

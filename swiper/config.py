@@ -15,3 +15,10 @@ ALI_AK = '妈蛋,不给我用'
 ALI_SK = 'dSS1yCCL3Qv15CkMx50q2f9RDFamgV'
 
 ali_url = 'https://bearxxr.oss-cn-shanghai.aliyuncs.com/'
+
+# Redis配置
+REDIS = {
+    'host': 'localhost',
+    'db': 5,
+    'port': 6379
+}
