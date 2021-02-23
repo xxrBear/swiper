@@ -21,3 +21,10 @@ def superlike(request):
     sid = int(request.POST.get('sid'))
     is_match = logics.superlike_someone(request.uid, sid)
     return render_json({'is_match': is_match})
+
+
+def dislike(request):
+    """不喜欢某人接口"""
+    sid = int(request.POST.get('sid'))
+    logics.dislike_someone(request.uid, sid)
+    return render_json()

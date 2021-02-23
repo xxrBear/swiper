@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.utils import IntegrityError
 
 
 class Swiped(models.Model):
@@ -12,6 +13,16 @@ class Swiped(models.Model):
     sid = models.IntegerField(verbose_name='用户滑动过的人')
     stype = models.CharField(verbose_name='滑动的类型', max_length=16, choices=STYPE)
     datetime = models.DateTimeField(verbose_name='添加日期', auto_now_add=True)
+
+    @classmethod
+    def swipe(cls, uid, sid, stype):
+        """添加滑动记录方法"""
+        if stype not in ['like', 'superlike', 'dislike']:
+            pass
+        try:
+            cls.objects.create(uid=uid, sid=sid, stype=stype)
+        except IntegrityError:
+            pass
 
     @classmethod
     def is_liked(cls, uid, sid):

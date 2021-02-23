@@ -5,6 +5,7 @@ from user.models import Profile
 from social.models import Swiped
 from social.models import Friends
 from libs.cache import rds
+from common import keys
 
 
 def rcmd_from_db(uid, num):
@@ -31,7 +32,7 @@ def rcmd_from_db(uid, num):
 
 def users_from_rds(uid):
     """从Redis中提取用户"""
-    user_id_list = rds.lrange('FIRST_K_%s' % uid, 0, 19)
+    user_id_list = rds.lrange(keys.FIRST_RCMD_K % uid, 0, 19)
     users = [user for user in User.objects.filter(id__in=user_id_list)]
     return users
 
@@ -55,17 +56,23 @@ def like_someone(uid, sid):
     :param sid:
     :return: True or False or None
     """
-    Swiped.objects.create(uid=uid, sid=sid, stype='like')
+    Swiped.swipe(uid, sid, stype='like')
+
+    # 删除滑动过的推荐
+    rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
+
     if Swiped.is_liked(sid, uid):
         Friends.make_friends(uid, sid)
-
         return True
     else:
         return False
 
 
 def superlike_someone(uid, sid):
-    Swiped.objects.create(uid=uid, sid=sid, stype='superlike')
+    Swiped.swipe(uid, sid, stype='superlike')
+
+    # 删除滑动过的推荐
+    rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
 
     liked_me = Swiped.is_liked(sid, uid)
 
@@ -76,5 +83,11 @@ def superlike_someone(uid, sid):
         return False
     else:
         # 对方并没有滑动过uid,将uid添加到对方的“优先推荐队列”
-        rds.rpush('FIRST_K_%s' % sid, uid)
+        rds.rpush(keys.FIRST_RCMD_K % sid, uid)
         return False
+
+
+def dislike_someone(uid, sid):
+    Swiped.swipe(uid, sid, stype='dislike')
+    # 删除滑动过的推荐
+    rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)

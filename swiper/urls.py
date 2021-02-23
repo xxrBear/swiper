@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^social/api/rcmd_user$', social_api.rcmd_user),
     url(r'^social/api/like$', social_api.like),
     url(r'^social/api/superlike$', social_api.superlike),
+    url(r'^social/api/dislike$', social_api.dislike),
 ]
