@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.utils import IntegrityError
 
+from common import stat
+
 
 class Swiped(models.Model):
     """滑动记录表"""
@@ -18,11 +20,11 @@ class Swiped(models.Model):
     def swipe(cls, uid, sid, stype):
         """添加滑动记录方法"""
         if stype not in ['like', 'superlike', 'dislike']:
-            pass
+            raise stat.STYPE_ERR
         try:
             cls.objects.create(uid=uid, sid=sid, stype=stype)
         except IntegrityError:
-            pass
+            raise stat.RESWIPE_ERR
 
     @classmethod
     def is_liked(cls, uid, sid):

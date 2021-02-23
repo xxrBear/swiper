@@ -15,7 +15,7 @@ def get_vcode(request):
     if status:
         return render_json()
     else:
-        return render_json(code=stat.SEND_SMS_ERR)
+        raise stat.SEND_SMS_ERR
 
 
 def sumbit_vcode(request):
@@ -34,7 +34,7 @@ def sumbit_vcode(request):
 
         return render_json(data=user.to_dict())
     else:
-        return render_json(code=stat.VCODE_ERR)
+        raise stat.VCODE_ERR
 
 
 def get_profile(request):
@@ -49,9 +49,9 @@ def set_profile(request):
     profile_form = ProfileForm(request.POST)
 
     if not user_form.is_valid():
-        return render_json(code=stat.USER_FROM_ERR, data=user_form.errors)
+        raise stat.USER_FROM_ERR(data=user_form.errors)
     if not profile_form.is_valid():
-        return render_json(code=stat.PROFILE_FORM_ERR, data=profile_form.errors)
+        raise stat.PROFILE_FORM_ERR(data=profile_form.errors)
 
     # 保存数据
     User.objects.filter(id=request.uid).update(**user_form.cleaned_data)
