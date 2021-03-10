@@ -91,3 +91,15 @@ def dislike_someone(uid, sid):
     Swiped.swipe(uid, sid, stype='dislike')
     # 删除滑动过的推荐
     rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
+
+
+def rewind_swiper():
+    """
+    反悔最近5分钟的操作
+    每天只能反悔3次
+
+    :return:
+    """
+    now = datetime.datetime.now()
+
+    pass

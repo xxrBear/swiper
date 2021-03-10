@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="swiper" uuid="cec73edf-52f6-498a-ad69-805850d7b31a">
+    <data-source source="LOCAL" name="swiper" uuid="682069f8-d2cd-4be8-8fb3-3f2903f9eb8f">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

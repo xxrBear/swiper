@@ -28,3 +28,9 @@ def dislike(request):
     sid = int(request.POST.get('sid'))
     logics.dislike_someone(request.uid, sid)
     return render_json()
+
+
+def rewind(request):
+    """反悔接口"""
+    logics.rewind_swiper()
+    return render_json()
