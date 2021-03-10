@@ -23,3 +23,5 @@ USER_FROM_ERR = gen_logic_err('USER_FROM_ERR', 1003)            # 用户资料�
 PROFILE_FORM_ERR = gen_logic_err('PROFILE_FORM_ERR', 1004)      # 社交资料验证错误
 STYPE_ERR = gen_logic_err('STYPE_ERR', 1005)                    # 滑动类型错误
 RESWIPE_ERR = gen_logic_err('RESWIPE_ERR', 1006)                # 重复滑动的错误
+REWIND_TIME_ERR = gen_logic_err('REWIND_TIME_ERR', 1007)        # 滑动超时错误
+REWIND_TIMEOUT_ERR = gen_logic_err('REWIND_TIMEOUT_ERR', 1008)  # 滑动次数上限错误

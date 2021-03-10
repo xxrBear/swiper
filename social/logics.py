@@ -6,6 +6,8 @@ from social.models import Swiped
 from social.models import Friends
 from libs.cache import rds
 from common import keys
+from swiper import config
+from common import stat
 
 
 def rcmd_from_db(uid, num):
@@ -93,13 +95,41 @@ def dislike_someone(uid, sid):
     rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
 
 
-def rewind_swiper():
+def rewind_swiper(uid):
     """
     反悔最近5分钟的操作
     每天只能反悔3次
-
-    :return:
     """
+    # 取出当前时间
     now = datetime.datetime.now()
 
-    pass
+    # 取出反悔key的过期时间，如果没有给一个默认值
+    rewind_key = keys.REWIND_K % (now.date(), uid)
+    rewind_times = rds.get(rewind_key, 0)
+
+    # 检查key的反悔次数，如果超过3次则抛出错误
+    if rewind_times > 3:
+        raise stat.REWIND_TIMEOUT_ERR
+
+    # 从数据库中取出最近滑动记录
+    latest_swipe = Swiped.objects.filter(uid=uid).latest('stime')
+
+    # 5分钟内可以撤销滑动，过时则抛错
+    pass_time = now - latest_swipe.stime
+    if pass_time.total_seconds() > config.TIMEOUT:
+        raise stat.REWIND_TIME_ERR
+
+    # 如果是超级喜欢，那么要把自己从对方的优先推荐队列中删去,好友表记录删去
+    if latest_swipe.stype == 'superlike':
+        rds.lrem(keys.FIRST_RCMD_K % latest_swipe.sid, 1, uid)
+        Friends.break_off(latest_swipe.sid, uid)
+
+    # 如果是超级喜欢和喜欢类型，那么要把好友表记录删去
+    elif latest_swipe.stype == 'like':
+        Friends.break_off(latest_swipe.sid, uid)
+
+    # 删除滑动记录
+    latest_swipe.delete()
+
+    # 更新反悔次数
+    rds.set(rewind_key, rewind_times + 1, 86400)

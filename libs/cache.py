@@ -19,7 +19,7 @@ class Redis(_Redis):
     def get(self, name, default=None):
         pickle_value = super().get(name)
         if not pickle_value:
-            return None
+            return default
         try:
             return loads(pickle_value)
         except UnpicklingError:

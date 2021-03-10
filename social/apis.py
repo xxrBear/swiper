@@ -32,5 +32,5 @@ def dislike(request):
 
 def rewind(request):
     """反悔接口"""
-    logics.rewind_swiper()
+    logics.rewind_swiper(request.uid)
     return render_json()

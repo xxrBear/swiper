@@ -14,7 +14,7 @@ class Swiped(models.Model):
     uid = models.IntegerField(verbose_name='用户自己')
     sid = models.IntegerField(verbose_name='用户滑动过的人')
     stype = models.CharField(verbose_name='滑动的类型', max_length=16, choices=STYPE)
-    datetime = models.DateTimeField(verbose_name='添加日期', auto_now_add=True)
+    stime = models.DateTimeField(verbose_name='添加日期', auto_now_add=True)
 
     @classmethod
     def swipe(cls, uid, sid, stype):
@@ -52,6 +52,12 @@ class Friends(models.Model):
         # 三元表达式把小的值放在前面
         uid1, uid2 = (uid2, uid1) if uid1 > uid2 else (uid1, uid2)
         cls.objects.create(uid1=uid1, uid2=uid2)
+
+    @classmethod
+    def break_off(cls, uid1, uid2):
+        """解除好友关系"""
+        uid1, uid2 = (uid2, uid1) if uid1 > uid2 else (uid1, uid2)
+        cls.objects.filter(uid1=uid1, uid2=uid2).delete()
 
     class Meta:
         db_table = 'friends'
