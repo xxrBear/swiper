@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1aea1a9-c470-4007-8c73-571077c8d459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b1aea1a9-c470-4007-8c73-571077c8d459" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,6 +135,11 @@
       <workItem from="1615341573048" duration="8722000" />
       <workItem from="1615446848868" duration="608000" />
       <workItem from="1615534239453" duration="3893000" />
+      <workItem from="1617438060730" duration="15000" />
+      <workItem from="1617440916606" duration="208000" />
+      <workItem from="1617441128564" duration="165000" />
+      <workItem from="1617450337478" duration="28000" />
+      <workItem from="1617497589364" duration="1627000" />
     </task>
     <servers />
   </component>
@@ -144,7 +147,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/swiper$manage.coverage" NAME="swiper Coverage Results" MODIFIED="1613204339068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/swiper$data_init.coverage" NAME="data_init Coverage Results" MODIFIED="1614907916910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/swiper$manage.coverage" NAME="swiper Coverage Results" MODIFIED="1613204339068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
