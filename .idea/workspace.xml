@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1aea1a9-c470-4007-8c73-571077c8d459" name="Default Changelist" comment="" />
+    <list default="true" id="b1aea1a9-c470-4007-8c73-571077c8d459" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -42,7 +45,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_init">
+  <component name="RunManager" selected="Python.swiper">
     <configuration name="data_init" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="swiper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,11 +90,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.data_init" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,7 +137,10 @@
       <workItem from="1617440916606" duration="208000" />
       <workItem from="1617441128564" duration="165000" />
       <workItem from="1617450337478" duration="28000" />
-      <workItem from="1617497589364" duration="1627000" />
+      <workItem from="1617497589364" duration="2575000" />
+      <workItem from="1617516933964" duration="23000" />
+      <workItem from="1617520223610" duration="14000" />
+      <workItem from="1617587283200" duration="163000" />
     </task>
     <servers />
   </component>

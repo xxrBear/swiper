@@ -16,7 +16,7 @@ def get_vcode(request):
         return render_json()
     else:
         raise stat.SEND_SMS_ERR
-
+        
 
 def sumbit_vcode(request):
     """提交验证码接口"""
