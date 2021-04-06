@@ -1,0 +1,4 @@
+基于Token的验证方式
+
+    ajax
+        有时无法携带session信息
