@@ -26,3 +26,10 @@ REDIS = {
 # 反悔接口配置
 TIMES = 3           # 反悔次数
 TIMEOUT = 5 * 60    # 反悔时间5分钟
+
+# 热度分数配置
+HOT_RANK_SCORE = {
+    'like': 5,
+    'superlike': 7,
+    'dislike': -5
+}

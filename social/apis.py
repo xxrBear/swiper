@@ -48,3 +48,8 @@ def friends_list(request):
     friends = logics.my_friends(request.uid)
     result = [user.to_dict() for user in friends]
     return render_json(data=result)
+
+
+def hot_rank(request):
+    rank_data = logics.get_hot_n(50)
+    return render_json(data=rank_data)

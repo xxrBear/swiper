@@ -63,6 +63,10 @@ def like_someone(uid, sid):
     # 删除滑动过的推荐
     rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
 
+    # 调整用户的积分
+    score = config.HOT_RANK_SCORE['like']
+    rds.zincrby(keys.HOT_RANK_K, score, sid)
+
     if Swiped.is_liked(sid, uid):
         Friends.make_friends(uid, sid)
         return True
@@ -77,6 +81,10 @@ def superlike_someone(uid, sid):
     rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
 
     liked_me = Swiped.is_liked(sid, uid)
+
+    # 调整用户的积分
+    score = config.HOT_RANK_SCORE['superlike']
+    rds.zincrby(keys.HOT_RANK_K, score, sid)
 
     if liked_me:
         Friends.make_friends(uid, sid)
@@ -93,6 +101,10 @@ def dislike_someone(uid, sid):
     Swiped.swipe(uid, sid, stype='dislike')
     # 删除滑动过的推荐
     rds.lrem(keys.FIRST_RCMD_K % uid, 1, sid)
+
+    # 调整用户的积分
+    score = config.HOT_RANK_SCORE['dislike']
+    rds.zincrby(keys.HOT_RANK_K, score, sid)
 
 
 def rewind_swiper(uid):
@@ -128,6 +140,10 @@ def rewind_swiper(uid):
     elif latest_swipe.stype == 'like':
         Friends.break_off(latest_swipe.sid, uid)
 
+    # 调整用户的积分
+    score = config.HOT_RANK_SCORE[latest_swipe.stype]
+    rds.zincrby(keys.HOT_RANK_K, score, latest_swipe.sid)
+
     # 删除滑动记录
     latest_swipe.delete()
 
@@ -156,3 +172,22 @@ def my_friends(uid):
     friends = Friends.friends_list(uid=uid)
     users = User.objects.filter(id__in=friends)
     return users
+
+
+def get_hot_n(num):
+    """获得积分排名 n 的数据"""
+    origin_data = rds.zrevrange(keys.HOT_RANK_K, 0, num-1, withscores=True)  # 获得原始数据
+    cleaned = [[int(uid), int(score)] for uid, score in origin_data]  # 原始数据清洗
+    uid_list = [uid for uid, _ in cleaned]  # 取出所有uid
+    users = User.objects.filter(id__in=uid_list)  # 取出所有用户
+    users = sorted(users, key=lambda user: uid_list.index(user.id))  # 调整 user 的顺序
+
+    # 组装数据
+    rank_data = {}
+    for idx, user in enumerate(users):
+        user_info = user.to_dict('phonenum', 'birthday', 'location')
+        user_info['score'] = cleaned[idx][1]
+        rank = idx + 1
+        rank_data[rank] = user_info
+
+    return rank_data
