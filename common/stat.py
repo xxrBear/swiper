@@ -25,3 +25,5 @@ STYPE_ERR = gen_logic_err('STYPE_ERR', 1005)                    # 滑动类型�
 RESWIPE_ERR = gen_logic_err('RESWIPE_ERR', 1006)                # 重复滑动的错误
 REWIND_TIME_ERR = gen_logic_err('REWIND_TIME_ERR', 1007)        # 滑动超时错误
 REWIND_TIMEOUT_ERR = gen_logic_err('REWIND_TIMEOUT_ERR', 1008)  # 滑动次数上限错误
+VipouttimeErr = gen_logic_err('VipouttimeErr', code=1009)       # 你的Vip权限超时了
+RequirepermErr = gen_logic_err('RequirepermErr', code=1010)     # 你没有这个VIP权限
