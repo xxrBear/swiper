@@ -1,6 +1,6 @@
 # swiper
 
-##   swiper 是一个前后端分离的项目，目前是测试哦！目前有三个模块，User、Social、VIP
+##   swiper 是一个前后端分离的项目，目前有三个模块，User、Social、VIP
 
 ##  快速启动
 
@@ -21,27 +21,7 @@
   celery worker -A tasks --loglevel==info
   ```
 
-## Celery配置
-
-**重试:Retrying**
-
-例子:
-
-    @app.task(bind=True)
-    def send_mail(self):
-        '''发送email逻辑'''
-        try:
-            假装有代码
-        except Exception as e:
-            raise self.retry(exc=e, countdown=3, max_retries=3)
-    
-    retry的参数可以有: 
-            exc: 指定抛出的异常
-            throw: 重试时是否通知worker是重试任务
-            eta: 指定重试的时间／日期
-            countdown: 每多少秒重试一次
-            max_retries: 最大重试次数
-上述案例用shared_task装饰器也可以使用。
+## Celery
 
 详细可参考:
     
@@ -51,7 +31,7 @@ https://docs.celeryproject.org/en/latest/
 Celery中文文档
 https://www.celerycn.io/ 
 
-Celery经典示例
+Celery经典示例:
 
 https://cloud.tencent.com/developer/article/1525682
 
